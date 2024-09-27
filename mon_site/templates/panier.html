@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Votre panier{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Votre panier</h2>
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom du produit</th>
+                <th scope="col">Quantité</th>
+                <th scope="col">Prix Unitaire</th>
+                <th scope="col">Prix Total</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if produits %}
+                {% for produit in produits %}
+                    <tr>
+                        <td>{{ produit.id }}</td>
+                        <td>{{ produit.titre }}</td>
+                        <td>{{ produit.quantite }}</td>
+                        <td>{{ produit.price }} $</td>
+                        <td>{{produit.prix_total|floatformat:2 }} $</td>
+                        <td>
+                            <a href="{% url 'supprimer_produit' produit.id %}" class="btn btn-danger btn-sm">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                <tr class="table-active">
+                    <td colspan="4" class="text-end"><strong>Total:</strong></td>
+                    <td><strong>{{ total_price|floatformat:2 }} $</strong></td>
+                    <td></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6" class="text-center">
+                        <h3>Votre Panier est vide!!!</h3>
+                    </td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+    {% if produits %}
+    <div class="d-flex justify-content-center mt-3">
+        <script
+            src="https://checkout.stripe.com/checkout.js"
+            class="stripe-button"
+            data-key="{{ key }}"
+            data-description="Paiement gateway"
+            data-amount="{{ total_price_stripe|floatformat:0 }}"
+            data-locale="auto"
+        ></script>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

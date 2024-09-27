@@ -1,0 +1,54 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: rgb(241, 240, 239);
+  padding: 1em;
+  text-align: center;
+}
+footer {
+  background-color: rgb(229, 229, 229);
+  text-align: center;
+  padding: 1em;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+.background-image {
+  background-image: url('https://www.apple.com/v/apple-events/home/af/images/overview/recent-events/gallery/jun-2023__cjqmmqlyd21y_large.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.background-image {
+  background-image: url("{% static 'images/background.jpg' %}");
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* Full height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1.display-3 {
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+
